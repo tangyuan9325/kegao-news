@@ -194,6 +194,108 @@ body{
   .secondary{grid-template-columns:1fr}
   .masthead-top{flex-direction:column;gap:4px}
 }
+
+/* ===== A4 打印样式 ===== */
+@page{
+  size:A4 portrait;
+  margin:15mm 14mm;
+}
+@media print{
+  body{
+    background:#fff !important;
+    padding:0 !important;
+    font-size:11pt;
+    line-height:1.6;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .paper{
+    max-width:100% !important;
+    width:100% !important;
+    padding:0 !important;
+    margin:0 !important;
+    box-shadow:none !important;
+    background:#fff !important;
+  }
+  .paper::before{display:none !important}
+
+  /* 报头：紧凑 */
+  .masthead{
+    border-width:2px !important;
+    padding:10px 14px !important;
+    margin-bottom:14px !important;
+  }
+  .masthead-title{font-size:32pt !important;letter-spacing:8px !important;margin:4px 0 !important}
+  .masthead-sub{font-size:9pt !important}
+  .masthead-top{font-size:8.5pt !important;flex-direction:row !important;gap:8px}
+
+  /* 主新闻 */
+  .headline{margin:16px 0 8px !important;break-after:avoid}
+  .headline h1{font-size:20pt !important;letter-spacing:1px !important}
+  .headline h1 .shock{font-size:22pt !important}
+  .headline-kicker{font-size:10pt !important;padding:2px 12px !important}
+  .byline{font-size:9pt !important;margin-bottom:12px !important}
+  .lead{font-size:11pt !important;margin-bottom:12px !important}
+
+  .main-figure{
+    margin:14px auto !important;
+    max-width:90% !important;
+    break-inside:avoid;
+  }
+  .main-figure img{max-height:180px !important}
+
+  .body-columns{
+    column-count:2 !important;
+    column-gap:20px !important;
+    font-size:10pt !important;
+    line-height:1.7 !important;
+  }
+  .body-columns p{margin-bottom:10px !important}
+
+  /* 荧光笔打印时保留 */
+  .mark{
+    background:rgba(255,235,59,.5) !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .mark-red{
+    background:rgba(211,47,47,.3) !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  /* 分隔线 */
+  .divider{margin:20px 0 !important;break-after:avoid}
+
+  /* 副新闻：第二页开始 */
+  .secondary{
+    grid-template-columns:1.2fr 1fr !important;
+    gap:20px !important;
+    break-inside:avoid;
+  }
+  .secondary h2{font-size:14pt !important}
+  .secondary p{font-size:10pt !important}
+  .qr-block img{max-width:140px !important}
+  .qr-block p{font-size:9pt !important}
+
+  /* 简讯 */
+  .briefs{
+    margin-top:16px !important;
+    padding:14px 18px !important;
+    break-inside:avoid;
+  }
+  .briefs h3{font-size:12pt !important}
+  .briefs p{font-size:9.5pt !important}
+
+  /* 报尾 */
+  .colophon{
+    margin-top:20px !important;
+    font-size:8pt !important;
+  }
+
+  /* 分页点：副新闻另起一页 */
+  .secondary{break-before:page}
+}
 </style>
 </head>
 <body>
