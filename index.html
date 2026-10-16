@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科高快报 — 今日要闻</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23B71C1C'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FAF6EC' font-family='serif' font-weight='bold'%3E%E6%8A%A5%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#F5EFE0;
+  --paper-dark:#EDE4CC;
+  --ink:#1A1A1A;
+  --ink-soft:#3A3A3A;
+  --red:#B71C1C;
+  --red-dark:#8B0000;
+  --accent:#D97757;
+  --highlight:#FFEB3B;
+  --rule:#1A1A1A;
+  --font-serif:'Noto Serif SC','Songti SC','SimSun',Georgia,serif;
+  --font-hei:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#2B2B2B;
+  font-family:var(--font-serif);
+  color:var(--ink);
+  line-height:1.8;
+  padding:20px 0;
+}
+.paper{
+  max-width:960px;margin:0 auto;background:var(--paper);
+  padding:40px 50px;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+  position:relative;
+}
+.paper::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,90,43,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(139,90,43,.08) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(0,0,0,.01) 2px, rgba(0,0,0,.01) 3px);
+  mix-blend-mode:multiply;
+}
+
+/* ===== 报头 ===== */
+.masthead{
+  border:3px double var(--red);
+  padding:18px 20px 14px;
+  text-align:center;
+  margin-bottom:20px;
+  background:var(--paper);
+}
+.masthead-top{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--ink-soft);
+  border-bottom:1px solid var(--ink);
+  padding-bottom:8px;margin-bottom:10px;
+  font-family:var(--font-hei);
+}
+.masthead-title{
+  font-size:64px;font-weight:900;letter-spacing:12px;
+  color:var(--red);font-family:var(--font-serif);
+  line-height:1.1;margin:8px 0;
+  text-shadow:1px 1px 0 rgba(0,0,0,.1);
+}
+.masthead-sub{
+  font-size:13px;color:var(--ink-soft);
+  border-top:1px solid var(--ink);padding-top:8px;
+  font-family:var(--font-hei);letter-spacing:2px;
+}
+
+/* ===== 主新闻 ===== */
+.headline{
+  text-align:center;margin:30px 0 10px;
+}
+.headline-kicker{
+  display:inline-block;background:var(--red);color:#fff;
+  padding:4px 16px;font-size:14px;font-family:var(--font-hei);
+  letter-spacing:4px;font-weight:bold;
+  margin-bottom:16px;
+}
+.headline h1{
+  font-size:42px;font-weight:900;line-height:1.3;
+  color:var(--ink);letter-spacing:2px;
+  margin-bottom:16px;
+}
+.headline h1 .shock{
+  color:var(--red);
+  font-size:48px;
+}
+.byline{
+  font-size:13px;color:var(--ink-soft);font-family:var(--font-hei);
+  margin-bottom:24px;padding-bottom:12px;
+  border-bottom:2px solid var(--ink);
+}
+.byline strong{color:var(--red)}
+
+/* 正文分栏 */
+.lead{
+  font-size:18px;font-weight:bold;line-height:1.9;
+  margin-bottom:20px;text-indent:2em;
+}
+.body-columns{
+  column-count:2;column-gap:32px;column-rule:1px solid var(--ink-soft);
+  font-size:15.5px;line-height:2;
+}
+.body-columns p{margin-bottom:14px;text-indent:2em;text-align:justify}
+
+/* 荧光笔 */
+.mark{
+  background:linear-gradient(transparent 55%, rgba(255,235,59,.55) 55%);
+  padding:0 2px;
+  font-weight:bold;
+}
+.mark-red{
+  background:linear-gradient(transparent 55%, rgba(211,47,47,.35) 55%);
+  padding:0 2px;font-weight:bold;
+}
+
+/* 主新闻配图位 */
+.main-figure{
+  margin:24px 0;text-align:center;
+  border:1px solid var(--ink);padding:10px;background:var(--paper-dark);
+}
+.main-figure img{max-width:100%;height:auto;display:block;margin:0 auto}
+.main-figure figcaption{
+  font-size:12px;color:var(--ink-soft);margin-top:8px;
+  font-family:var(--font-hei);
+}
+
+/* ===== 分隔线 ===== */
+.divider{
+  border:none;border-top:2px solid var(--ink);
+  margin:36px 0;position:relative;
+}
+.divider::after{
+  content:"◆";position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);background:var(--paper);
+  padding:0 12px;color:var(--red);font-size:14px;
+}
+
+/* ===== 副新闻 ===== */
+.secondary{
+  display:grid;grid-template-columns:1.3fr 1fr;gap:28px;
+  margin-top:10px;
+}
+.secondary-tag{
+  display:inline-block;background:var(--ink);color:var(--paper);
+  padding:2px 10px;font-size:11px;font-family:var(--font-hei);
+  letter-spacing:2px;margin-bottom:10px;
+}
+.secondary h2{
+  font-size:24px;font-weight:900;line-height:1.4;
+  margin-bottom:12px;
+}
+.secondary p{font-size:14.5px;line-height:1.9;text-indent:2em;text-align:justify}
+.qr-block{
+  text-align:center;border:1px dashed var(--ink);padding:16px;
+  background:var(--paper-dark);
+}
+.qr-block img{max-width:200px;width:100%;height:auto;border:1px solid var(--ink)}
+.qr-block p{font-size:12px;color:var(--ink-soft);margin-top:10px;text-indent:0;font-family:var(--font-hei)}
+
+/* ===== 简讯 ===== */
+.briefs{
+  margin-top:30px;padding:20px;border:2px solid var(--red);
+  background:var(--paper-dark);position:relative;
+}
+.briefs-tag{
+  position:absolute;top:-14px;left:20px;background:var(--red);color:#fff;
+  padding:2px 14px;font-size:13px;font-family:var(--font-hei);
+  letter-spacing:3px;font-weight:bold;
+}
+.briefs h3{font-size:18px;margin-bottom:10px}
+.briefs p{font-size:13.5px;line-height:1.8;color:var(--ink-soft)}
+.briefs .horn{
+  display:inline-block;font-size:22px;vertical-align:middle;margin-right:6px;
+}
+
+/* ===== 报尾 ===== */
+.colophon{
+  margin-top:40px;padding-top:16px;border-top:1px solid var(--ink);
+  text-align:center;font-size:11px;color:var(--ink-soft);
+  font-family:var(--font-hei);letter-spacing:1px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width:768px){
+  .paper{padding:20px 16px;margin:0 8px}
+  .masthead-title{font-size:36px;letter-spacing:6px}
+  .headline h1{font-size:26px}
+  .headline h1 .shock{font-size:30px}
+  .body-columns{column-count:1}
+  .secondary{grid-template-columns:1fr}
+  .masthead-top{flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<div class="paper">
+
+  <!-- 报头 -->
+  <header class="masthead">
+    <div class="masthead-top">
+      <span>第 肆 拾 捌 号</span>
+      <span>科高校园编辑部 主办</span>
+      <span>乙巳年 · 十月十六日 · 晚自习专刊</span>
+    </div>
+    <div class="masthead-title">科 高 快 报</div>
+    <div class="masthead-sub">—— 倾听同学声音 · 记录校园风云 ——</div>
+  </header>
+
+  <!-- 主新闻 -->
+  <article class="headline">
+    <div class="headline-kicker">本 报 头 条</div>
+    <h1>
+      <span class="shock">震 惊</span>！<br>
+      高三学生平板越狱退款后<br>
+      <span style="color:var(--red)">班主任竟禁止其使用同学平板</span>
+    </h1>
+    <div class="byline">
+      本报讯 &nbsp; <strong>本台特约记者</strong> &nbsp;|&nbsp; 10 月 16 日晚自习讯
+    </div>
+  </article>
+
+  <p class="lead">
+    本报讯 &nbsp; 本月十六日晚自习时分，高三（六）班一同学因借用同学平板查询单词，竟被当班班主任当场拦下，理由是——<span class="mark">该生已于九月将下发平板全额退款，按规定不得再使用学校平板资源</span>。事件一出，全班哗然，本报第一时间赶赴现场。
+  </p>
+
+  <figure class="main-figure">
+    <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/GBt0bLVDMotog2x7300cVzGyn8c" alt="AI 规划师小鹿挥手" style="max-height:280px;object-fit:contain">
+    <figcaption>▲ 本报卡通形象"小鹿"就此事表示：同学之间互助查词，本应是题中应有之义</figcaption>
+  </figure>
+
+  <div class="body-columns">
+    <p>事情要从一个多月前说起。平板下发后第四天，该同学即<span class="mark">将设备刷机越狱</span>，随后申请并成功拿到全额退款。彼时风波本已平息，同学回归"无板一身轻"的自在状态。</p>
+
+    <p>孰料九月间，他又在朋友圈内<span class="mark-red">传播起一种"无需刷机即可越狱"的新款破解方法</span>，消息四散，数位同学摩拳擦掌。然而——<span class="mark">此君转头即被好友背刺</span>，举报信息直达校方，风波再起。所幸处理得当，此事最终压下，未再扩大。</p>
+
+    <p>本以为事情就此翻篇。谁料今日晚自习，该生顺口借过邻座平板查个单词，<span class="mark">屏幕刚亮起，班主任便出现在身后</span>。</p>
+
+    <p>"你既然已经全额退款，<span class="mark">就不允许再使用其他同学的平板</span>。"班主任语气坚决。该生当场辩驳：查单词乃学习刚需，借用同学设备与本人退款何干？然<span class="mark-red">反驳无效</span>，平板被当场收回。</p>
+
+    <p>本报就此采访了数位在场同学。有人认为"规矩就是规矩"，也有人直言："退款退的是他自己那台，同学自愿借的东西，老师凭什么管？"截至发稿，校方尚未就此事件作出回应。</p>
+
+    <p>本报将持续关注事态发展。</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 副新闻 -->
+  <section class="secondary">
+    <div>
+      <span class="secondary-tag">次 条</span>
+      <h2>多次上书平板漏洞遭拒<br>同学自建 QQ 交流群"揭竿而起"</h2>
+      <p>本报讯 &nbsp; 高三某同学长期以来就小鹿爱学平板系统中的漏洞与不便多次向学校反馈，均未获明确答复。失望之余，他决定另辟蹊径——<span class="mark">建立一个属于学生自己的小鹿爱学交流群</span>，让同学们在群内自由讨论使用心得、汇总 bug、交流技巧。</p>
+      <p>群规明确：<strong>加群需经 Bot 审核通过</strong>，确保入群者确为科高在校生，杜绝无关人员混入。他表示："既然官方渠道不听，那我们自己建一个家。"</p>
+    </div>
+    <div class="qr-block">
+      <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/Nq4AbaK2oo71tDxQCfBc13DTnsg" alt="QQ 群招募二维码">
+      <p>扫码加群 · Bot 审核通过后方可入群<br>—— 学生自己的小鹿爱学交流群 ——</p>
+    </div>
+  </section>
+
+  <!-- 最次新闻：简讯 -->
+  <section class="briefs">
+    <span class="briefs-tag">速 讯</span>
+    <h3><span class="horn">📢</span>震撼首发：管控系统 Bug 已汇总至 10+ 条</h3>
+    <p>据悉，学生自建交流群成立仅数日，已自发收集到小鹿爱学管控系统各类漏洞与 Bug <strong>十余条</strong>，涉及锁屏、截屏、应用权限、时间同步等多个模块。群内同学笑称："与其等官方修，不如我们自己先建个清单。"想了解完整 Bug 清单？扫码进群，速来围观。</p>
+  </section>
+
+  <!-- 报尾 -->
+  <footer class="colophon">
+    本期编辑：科高校园编辑部 &nbsp;|&nbsp; 排版：老派报社风格 &nbsp;|&nbsp; 本报内容纯属校园娱乐，如有雷同……那就是真的
+  </footer>
+
+</div>
+
+</body>
+</html>
