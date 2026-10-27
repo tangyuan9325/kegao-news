@@ -13,10 +13,10 @@
 
 ## 关于仓库合并
 
-原 `group-rules` 仓库的内容已并入本仓库的 `rules.html`，两个站点合并为一个。
+原 `group-rules` 仓库的内容已并入本仓库的 `rules.html`，两个站点合并为这一个。
 
-- 旧地址 `https://tangyuan9325.github.io/group-rules/` 现在会跳转到 `rules.html`
-- 原 `group-rules` 仓库的历史提交仍完整保留
+- 内容以本仓库的 `rules.html` 为准，长期维护在这里进行
+- 原 `group-rules` 仓库已删除，旧地址 `https://tangyuan9325.github.io/group-rules/` 不再可用
 
 ## 部署
 
