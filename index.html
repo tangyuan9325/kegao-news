@@ -42,6 +42,26 @@ body{
   mix-blend-mode:multiply;
 }
 
+/* ===== 站点导航 ===== */
+.site-nav{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  font-family:var(--font-hei);font-size:13px;letter-spacing:2px;
+  padding-bottom:10px;margin-bottom:18px;
+  border-bottom:1px solid var(--ink);
+}
+.site-nav-brand{
+  font-weight:900;color:var(--red);text-decoration:none;
+  letter-spacing:5px;font-family:var(--font-serif);font-size:16px;margin-right:6px;
+}
+.site-nav-gap{flex:1}
+.site-nav-link{
+  color:var(--ink-soft);text-decoration:none;
+  padding:5px 14px;border:1px solid transparent;
+  transition:color .2s,background .2s,border-color .2s;
+}
+.site-nav-link:hover{color:var(--red);border-color:var(--red)}
+.site-nav-link.is-active{background:var(--red);color:#fff;border-color:var(--red)}
+
 /* ===== 报头 ===== */
 .masthead{
   border:3px double var(--red);
@@ -177,6 +197,25 @@ body{
   display:inline-block;font-size:22px;vertical-align:middle;margin-right:6px;
 }
 
+/* ===== 启事（守则入口） ===== */
+.notice{
+  margin-top:24px;padding:24px 26px;position:relative;
+  border:1px dashed var(--ink);background:var(--paper-dark);
+}
+.notice-tag{
+  position:absolute;top:-12px;left:18px;background:var(--ink);color:var(--paper);
+  padding:2px 12px;font-size:12px;font-family:var(--font-hei);
+  letter-spacing:3px;font-weight:bold;
+}
+.notice h3{font-size:20px;margin:6px 0 8px}
+.notice p{font-size:14px;color:var(--ink-soft);line-height:1.9}
+.notice-link{
+  display:inline-block;margin-top:12px;
+  font-family:var(--font-hei);font-size:13px;font-weight:bold;letter-spacing:1px;
+  color:var(--red);text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:1px;
+}
+.notice-link:hover{background:var(--red);color:#fff;border-color:var(--red);padding:2px 8px;text-decoration:none}
+
 /* ===== 报尾 ===== */
 .colophon{
   margin-top:40px;padding-top:16px;border-top:1px solid var(--ink);
@@ -218,6 +257,7 @@ body{
     background:#fff !important;
   }
   .paper::before{display:none !important}
+  .site-nav{display:none !important}
 
   /* 报头：紧凑 */
   .masthead{
@@ -302,6 +342,14 @@ body{
 
 <div class="paper">
 
+  <!-- 站点导航 -->
+  <nav class="site-nav">
+    <a class="site-nav-brand" href="./">狸狸报社</a>
+    <span class="site-nav-gap"></span>
+    <a class="site-nav-link is-active" href="./">今日要闻</a>
+    <a class="site-nav-link" href="rules.html">社群守则</a>
+  </nav>
+
   <!-- 报头 -->
   <header class="masthead">
     <div class="masthead-top">
@@ -374,6 +422,14 @@ body{
     <span class="briefs-tag">速 讯</span>
     <h3><span class="horn">📢</span>震撼首发：管控系统 Bug 已汇总至 10+ 条</h3>
     <p>据悉，学生自建交流群成立仅数日，已自发收集到小鹿爱学管控系统各类漏洞与 Bug <strong>十余条</strong>，涉及锁屏、截屏、应用权限、时间同步等多个模块。群内同学笑称："与其等官方修，不如我们自己先建个清单。"想了解完整 Bug 清单？扫码进群，速来围观。</p>
+  </section>
+
+  <!-- 启事：守则入口 -->
+  <section class="notice">
+    <span class="notice-tag">启 事</span>
+    <h3>本群《社群守则》正式上线</h3>
+    <p>入群先读公告，提问要有章法。四条核心规则、标准提问模板、网络配置小贴士，已整理为独立页面，请全体群成员先读后问。</p>
+    <a class="notice-link" href="rules.html">阅读《社群守则》全文 →</a>
   </section>
 
   <!-- 报尾 -->
