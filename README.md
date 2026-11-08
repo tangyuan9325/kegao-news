@@ -21,3 +21,9 @@
 ## 部署
 
 GitHub Pages，legacy 分支部署：`main` 分支根目录，推送到 `main` 即自动构建。
+
+## 📄 许可证
+
+本项目采用 [MIT License](LICENSE) 开源。
+
+Copyright (c) 2026 TangYuan
